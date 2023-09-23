@@ -1,6 +1,6 @@
 from final import LinkedList,Node
 import copy
-danhBa = ['Bao', 'Anh', 'Cuong','Cu', 'Ao',  'Cao', 'Hung', 'Duat', 'Uyen', 'Khoa', 'Dung', 'Duc',  'Danh', 'Anh', 'Ao'] 
+danhBa = ['Bao', 'Tra', 'Anh', 'Cuong', 'Cu', 'Ao',  'Cao', 'Hung', 'Duat', 'Uyen', 'Khoa', 'Dung', 'Duc',  'Danh', 'Anh', 'Ao'] 
 danhball = LinkedList()
 '''danhball.head = Node(danhBa[0])
 danhball.tail = danhball.head
