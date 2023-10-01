@@ -33,4 +33,10 @@ fast.pourOut()
 fast.pourIn('Blue')
 print(fast.getListColor())
 
+from typing import List
+class TubeManager():
+    def __init__(self,tubelist : list[Tube] = []):
+        self.tubelist = tubelist
+        self.status = [False]*len(tubelist)
+
 
