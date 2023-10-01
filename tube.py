@@ -72,4 +72,22 @@ class TubeManager():
                 print('You didnt win')
                 return False
         print('You Win')
+tm = TubeManager([
+    Tube(["Red","Green","Blue","Yellow"]),
+    Tube(["Red","Green","Blue","Yellow"]),
+    Tube(["Red","Green","Blue","Yellow"]),
+    Tube(["Red","Green","Blue","Yellow"]),
+    Tube(),
+    Tube()
+])
+for t in tm.tubelist:
+    print(t)
+gameOver = False
+while not gameOver:
+    src = int(input('Source (0-5):'))
+    des = int(input('Destination (0-5):'))
+    tm.moveWater(src,des)
+    for t in tm.tubelist:
+        print(t)
+    gameOver = tm.isFinish()
 
