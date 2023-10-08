@@ -1,3 +1,5 @@
+
+COLORS = ("red","blue","black")
 class StackBase:
     def __init__(self, top = None, buffer_size = 1000) -> None:
         self.top = top
@@ -62,9 +64,6 @@ class StackLL(StackBase):
         self.length +=1
 
     def pop(self):
-        """
-        xóa phần tử tại vị tri top (tall)
-        """
         if self.top == None:
             return
         tmp = self.top.next

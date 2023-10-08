@@ -1,10 +1,20 @@
 import pygame
+from pygame import Rect
 pygame.init()
 width = 600
-height = 500
+height = 600
+RED = (139, 0, 0)
+border_radius = 20
 screen = pygame.display.set_mode((width,height))
 pygame.display.set_caption("text pygame")
 
+rec = Rect(250,200,100,100)
+rec2 = Rect(225,175,150,150)
+rec3 = Rect(200,150,200,200)
+rec4 = Rect(175,125,250,250)
+rec5 = Rect(150,100,300,300)
+rec6 = Rect(125,75,350,350)
+rec7 = Rect(100,50,400,400)
 running = True
 while running:
     for even in pygame.event.get():
@@ -14,5 +24,12 @@ while running:
             running = False
         if even.type == pygame.K_LALT and even.type == pygame.K_F4:
             running = False
+        pygame.draw.rect(screen,RED,rec,border_radius)
+        pygame.draw.rect(screen,RED,rec2,border_radius)
+        pygame.draw.rect(screen,RED,rec3,border_radius)
+        pygame.draw.rect(screen,RED,rec4,border_radius)
+        pygame.draw.rect(screen,RED,rec5,border_radius)
+        pygame.draw.rect(screen,RED,rec6,border_radius)
+        pygame.draw.rect(screen,RED,rec7,border_radius)
     pygame.display.flip()
 pygame.quit()
