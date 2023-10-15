@@ -4,7 +4,7 @@ WIDTH = 1600
 HEIGHT = 900
 screen = pg.display.set_mode((WIDTH, HEIGHT))
 pg.display.set_caption('Water Puzzle Game by Sumato')
-# from tube import Tube
+from tube import Tube
 
 COLORS = {
     'red': (255,0,0),
@@ -15,7 +15,7 @@ COLORS = {
     'white': (255,255,255),
     'BG': (127, 127, 127)
 }
-# tube1 = Tube(['red','red', 'green', 'green'])
+tube1 = Tube(['red','red', 'green', 'green'])
 
 COLOR_HEIGHT = COLOR_WITH = WIDTH // 16 
 TUBE_BORDER_RADIUS = COLOR_WITH // 2
@@ -26,7 +26,20 @@ color_graphics = [pg.Rect(0*(COLOR_WITH + 50) + 50, \
 tube_graphic_top_cover = pg.Rect((tube_x, tube_y, COLOR_WITH, 3))
 
 #code here
-
+def draw_Tube(tube:Tube):
+    colors = tube.getListColor()[::-1]
+    for i in range(len(colors)):
+        if i == 0:
+            pg.draw.rect(screen,COLORS[colors[i]],color_graphics[i],
+                        border_bottom_left_radius= TUBE_BORDER_RADIUS,
+                        border_bottom_right_radius=TUBE_BORDER_RADIUS,)
+        else:
+            pg.draw.rect(screen,COLORS[colors[i]], color_graphics[i])
+    tube_graphics = pg.Rect(tube_x,tube_y,COLOR_WITH,5*COLOR_HEIGHT)
+    pg.draw.rect(screen,COLORS['black'],tube_graphics,3,
+                        border_bottom_left_radius= TUBE_BORDER_RADIUS,
+                        border_bottom_right_radius=TUBE_BORDER_RADIUS)
+    pg.draw.rect(screen,COLORS["BG"],tube_graphic_top_cover)
 #end code
 
 def render(screen, events):
@@ -34,6 +47,7 @@ def render(screen, events):
     global gameOver
     screen.fill((127,127,127))
     print(events)
+    draw_Tube(tube1)
     pg.display.update()
 
 gameOver = False
