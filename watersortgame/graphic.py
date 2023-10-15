@@ -63,41 +63,42 @@ class TubeGraphicManager():
             #tao doi tuong tubegraphic voi tube,vi tri va man hinh tuong ung
             tubeRect = TubeGraphic(tub,id*(COLOR_WITH + 50)+50,HEIGHT//2 - 4*COLOR_HEIGHT, id, screen)
             self.tubeGraphicList.append(tubeRect)#them doi tuong Tubegraphic vao danh sach
-        self.status = [False]*len(self.tubeGraphicList)
+        self.status = [False]*len(self.tubeGraphicList) # Khởi tạo danh sách trạng thái với các giá trị False
     def isValidMove(self,fromTube : Tube,toTube:Tube):
-        if fromTube.checkempty() or toTube.checkfull():
+        if fromTube.checkempty() or toTube.checkfull():# Kiểm tra nếu ống nguồn trống hoặc ống đích đầy
             return False
-        if toTube.checkempty():
+        if toTube.checkempty():# Kiểm tra nếu ống đích trống
             return True
         if fromTube.getTopColor().data != toTube.getTopColor.data:
+        # Kiểm tra nếu màu của ống trên cùng khác nhau
             return False
         return True
     def moveWaterByIdx(self,srcIdx:int,desIdx:int):
-        srcTube = self.tubeGraphicList[srcIdx].tube
-        desTube = self.tubeGraphicList[desIdx].tube
-        if self.isValidMove(srcTube,desTube):
-            color = srcTube.pop()
-            desTube.pourIn(color)
+        srcTube = self.tubeGraphicList[srcIdx].tube # Lấy đối tượng Tube nguồn từ danh sách TubeGraphic
+        desTube = self.tubeGraphicList[desIdx].tube # Lấy đối tượng Tube đích từ danh sách TubeGraphic
+        if self.isValidMove(srcTube,desTube): # Kiểm tra nếu di chuyển hợp lệ
+            color = srcTube.pop() # Xóa màu từ ống nguồn
+            desTube.pourIn(color) # Đổ màu vào ống đích
     def moveWater(self,srcTube:Tube,desTube:Tube):
-        if self.isValidMove(srcTube,desTube):
-            desTube.push(srcTube.pop())
+        if self.isValidMove(srcTube,desTube): # Kiểm tra nếu di chuyển hợp lệ
+            desTube.push(srcTube.pop()) # Đẩy màu từ ống nguồn vào ống đích
     def isFinish(self):
         for i in range(len(self.tubeGraphicList)):
             tubeitem = self.tubeGraphicList[i].tube
-            if tubeitem.checkempty():
+            if tubeitem.checkempty(): # Kiểm tra nếu ống trống
                 self.status[i] = True
-            elif tubeitem.checkfull():
+            elif tubeitem.checkfull(): # Kiểm tra nếu ống đầy
                 colors = tubeitem.getListColor()
                 waterA = colors[0]
                 self.status[i]=True
                 for waterB in colors[1:]:
-                    if waterA != waterB:
+                    if waterA != waterB: # Kiểm tra nếu các màu trong ống không giống nhau
                         self.status[i] = False
             else:
                 self.status[i] = False
         for statusitem in self.status:
-            if statusitem == False:
-                print('You didnt win')
+            if statusitem == False: # Kiểm tra nếu trạng thái của bất kỳ ống nào là False
+                print('You didnt win') # In ra thông báo không chiến thắng
                 return False
-        print('you win!')
+        print('you win!')  # In ra thông báo chiến thắng
         return True
