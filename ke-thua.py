@@ -1,21 +1,22 @@
 class Animal:
-    def __init__(self,leg,color,name):
-        self.leg = leg
+    def __init__(self,sound,color,id):
+        self.sound = sound
         self.color = color
-        self.name = name
-    def sound(self):
-        print('GRUGRUGRU')
+        self.id = id
+    def speed1(self):
+        print('10-30 mph') 
 class Dog(Animal):
-    def __init__(self,leg,color,name):
-        super().__init__(leg,color,name)
-    def sound2(self):
-        print('wufwuf')
-class Chicken(Animal):
-    def __init__(self,leg,color,name):
-        super().__init__(leg,color,name)
-    def sound(self):
-        print('cuctaccuctac')    
-animal = Animal(2,'green','cat')
-dog = Dog(4,'brown','kiki')
-chicken = Chicken(2,'yellow','sus')
-chicken.sound()
+    def __init__(self,sound,color,id):
+        super().__init__(sound,color,id)
+    def speed2(self):
+        print('15-20 mph') 
+class Cat(Animal):
+    def __init__(self,sound,color,id):
+        super().__init__(sound,color,id)
+    def speed3(self):
+        print('20-30 mph')    
+animal = Animal('wwuwuwu','green','222')
+dog = Dog('barkbark','brown','123')
+cat = Cat('mewmew','yellow','223')
+cat.speed3()
+print(cat.sound)

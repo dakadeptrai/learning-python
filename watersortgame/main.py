@@ -17,7 +17,24 @@ tM = TubeGraphicManager(screen,[
     Tube([]),
 ])
 # Hàm draw_move_text sẽ hiển thị số lượt di chuyển.
-    
+def processInput(events,tube_graphics):
+    for event in events:
+        if event.type == pg.MOUSEBUTTONDOWN:
+            print('MOUSEBUTTONDOWN detected')
+            detect_interactions(tube_graphics)
+def detect_interactions(tube_graphics: List[TubeGraphic]):
+    for tg in tube_graphics:
+        detect_tube_selection(tg)
+def detect_tube_selection(tg:TubeGraphic):
+    mouse_focus = pg.mouse.get_focused() != 0
+    left_mouse_clicked = pg.mouse.get_pressed()[0]
+    clicked_on_tube = tg.tube_graphic.collidepoint(pg.mouse.get_pos())
+    tube_empty = tg.tube.checkempty()
+    if mouse_focus and left_mouse_clicked and clicked_on_tube and not tube_empty:
+        print(str(tg.id)+' is selected')
+        tg.lift_up()
+
+
 def render(screen, events):
     ''' Update current game state '''
     global gameOver

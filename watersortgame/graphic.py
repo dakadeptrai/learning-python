@@ -18,23 +18,22 @@ class TubeGraphic:
         self.is_selected = False
         self.color_graphics = self.get_color_graphics(y)
     def get_color_graphics(self,y):
-        colorRect = []
+        colorRects = []
         for y in range(4):
             colorRect = pg.Rect(self.id*(COLOR_WITH + 50)+50,\
                                 HEIGHT//2 - y*COLOR_HEIGHT,COLOR_WITH,COLOR_HEIGHT)
-            colorRect.append(colorRect)
-        return colorRect
-    def draw_Tube(self):
-        colors = self.tube.getListColor()[::-1]
+            colorRects.append(colorRect)
+        return colorRects
+    def drawTube(self):
+        colors = self.tube.getListColor()[::-1]     
         for i in range(len(colors)):
             if i == 0:
-                pg.drdaw.rect(self.screen,COLORS[colors[i]],self.color_graphics[i],
+                pg.draw.rect(self.screen,COLORS[colors[i]],self.color_graphics[i],
                             border_bottom_left_radius= TUBE_BORDER_RADIUS,
                             border_bottom_right_radius=TUBE_BORDER_RADIUS,)
             else:
                 pg.draw.rect(self.screen,COLORS[colors[i]], self.color_graphics[i])
-        tube_graphics = pg.Rect(self.tube_x,self.tube_y,COLOR_WITH,5*COLOR_HEIGHT)
-        pg.draw.rect(self.screen,COLORS['black'],tube_graphics,3,
+        pg.draw.rect(self.screen,COLORS['black'],self.tube_graphic,3,
                             border_bottom_left_radius= TUBE_BORDER_RADIUS,
                             border_bottom_right_radius=TUBE_BORDER_RADIUS)
         pg.draw.rect(self.screen,COLORS["BG"],self.tube_graphic_top_cover)
