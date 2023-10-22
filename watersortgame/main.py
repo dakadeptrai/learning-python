@@ -43,6 +43,7 @@ def render(screen, events):
     for tube_graphic in tM.tubeGraphicList:
         tube_graphic.drawTube()
     gameOver = tM.isFinish()
+    processInput(events,tM.tubeGraphicList)
     pg.display.update()
 
 
