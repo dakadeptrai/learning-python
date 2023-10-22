@@ -44,14 +44,14 @@ class TubeGraphic:
         self._move_(-20)
         self.is_selected = False
     def _move_(self,offset = 20):
-        '''self.tube_graphic.update(self.tube_graphic.left,
+        self.tube_graphic.update(self.tube_graphic.left,
                                  self.tube_graphic.top - offset,
                                  self.tube_graphic.width,
-                                 self.tube_graphic.height)'''
-        self.tube_graphic.update(self.tube_graphic_top_cover.left,
-                                 self.tube_graphic_top_cover.top -offset,
-                                 self.tube_graphic.width,
                                  self.tube_graphic.height)
+        self.tube_graphic_top_cover.update(self.tube_graphic_top_cover.left,
+                                 self.tube_graphic_top_cover.top -offset,
+                                 self.tube_graphic_top_cover.width,
+                                 self.tube_graphic_top_cover.height)
         for cG in self.color_graphics:
             cG.update(cG.left,cG.top-offset,cG.width,cG.height)
 class TubeGraphicManager():
